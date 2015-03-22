@@ -2548,7 +2548,7 @@ def elemwise_checker(op, expected_f, gap=None, test_dtypes=None,
         test_dtypes = sparse.all_dtypes
 
     class Tester(unittest.TestCase):
-    _multiprocess_can_split_ = True
+        _multiprocess_can_split_ = True
 
         def setUp(self):
             super(Tester, self).setUp()
