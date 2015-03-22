@@ -10,6 +10,7 @@ from theano.compile import Mode, ProfileMode
 
 
 class T_bunch_of_modes(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test1(self):
         # this is a quick test after the LazyLinker branch merge
@@ -49,6 +50,7 @@ class T_bunch_of_modes(unittest.TestCase):
 
 
 class T_ProfileMode_WrapLinker(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_1(self):
         # First, compile a function with a new ProfileMode() object
         # No need to call that function

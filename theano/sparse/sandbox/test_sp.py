@@ -24,6 +24,7 @@ from theano.sparse.tests.test_basic import sparse_random_inputs
 
 
 class TestSP(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_convolution(self):
 #        print '\n\n*************************************************'
 #        print '           TEST CONVOLUTION'

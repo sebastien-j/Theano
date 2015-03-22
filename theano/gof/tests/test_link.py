@@ -84,6 +84,7 @@ def FunctionGraph(inputs, outputs):
 
 
 class TestPerformLinker(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_thunk(self):
         x, y, z = inputs()
         e = mul(add(x, y), div(x, y))
@@ -135,6 +136,7 @@ def wrap_linker(fgraph, linkers, wrapper):
 
 
 class TestWrapLinker(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_0(self):
         nodes = []
 

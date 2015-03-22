@@ -158,6 +158,7 @@ class TestOp:
 
 
 class TestMakeThunk(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_no_c_code(self):
         class IncOnePython(Op):
             """An Op with only a Python (perform) implementation"""

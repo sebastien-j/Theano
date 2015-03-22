@@ -7,6 +7,7 @@ from theano import config
 from theano.configparser import AddConfigVar, ConfigParam, THEANO_FLAGS_DICT
 
 class T_config(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_invalid_default(self):
         # Ensure an invalid default value found in the Theano code only causes

@@ -98,6 +98,7 @@ def inputs(xbc=(0, 0), ybc=(0, 0), zbc=(0, 0)):
 
 
 class test_dimshuffle_lift(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_double_transpose(self):
         x, y, z = inputs()
         e = ds(ds(x, (1, 0)), (1, 0))
@@ -164,6 +165,7 @@ def test_add_canonizer_problem0():
 
 
 class test_greedy_distribute(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_main(self):
         a, b, c, d, x, y, z = matrices('abcdxyz')
 
@@ -215,6 +217,7 @@ class test_greedy_distribute(unittest.TestCase):
 
 
 class test_canonize(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_muldiv(self):
         x, y, z = matrices('xyz')
         a, b, c, d = matrices('abcd')
@@ -856,6 +859,7 @@ def test_const_type_in_mul_canonizer():
 
 
 class test_fusion(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def do(self, mode, shared_fn, shp, gpu=False, nb_repeat=1, assert_len_topo=True, slice=None):
         """
         param shared_fn: if None, will use compile.function
@@ -1443,6 +1447,8 @@ class TestCompositeCodegen(unittest.TestCase):
     Test The Composite Ops code generation in a case where there is multiple
     scalar ops with support code.
     """
+    _multiprocess_can_split_ = True
+
     def setUp(self):
         upgrade_to_float = theano.scalar.basic.upgrade_to_float
 
@@ -1739,6 +1745,7 @@ def test_local_useless_subtensor():
 
 
 class test_local_subtensor_make_vector(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_scalar_idx(self):
         x, y, z = tensor.lscalars('xyz')
         v = make_vector(x, y, z)
@@ -1787,6 +1794,7 @@ class test_local_subtensor_make_vector(unittest.TestCase):
 
 
 class test_local_subtensor_lift(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test0(self):
         # basic test that the Op works
         x = tensor.matrix('x')
@@ -1960,6 +1968,7 @@ class test_local_subtensor_lift(unittest.TestCase):
 
 
 class test_local_subtensor_merge(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
         self.x_shapes = [(2, 2), (5, 3), (4, 1), (1, 2),
@@ -2443,6 +2452,7 @@ class test_local_subtensor_merge(unittest.TestCase):
 
 
 class test_local_adv_sub1_adv_inc_sub1(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
         mode = theano.compile.mode.get_default_mode()
@@ -2523,6 +2533,7 @@ class test_local_adv_sub1_adv_inc_sub1(unittest.TestCase):
 
 
 class Test_alloc_zero(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         mode = theano.compile.mode.get_default_mode()
         self.mode = mode.including("local_incsubtensor_of_zeros",
@@ -2788,6 +2799,7 @@ def test_local_subtensor_of_dot():
 
 
 class Test_local_elemwise_alloc(unittest.TestCase):
+    _multiprocess_can_split_ = True
     dtype = config.floatX
 
     def setUp(self):
@@ -3056,6 +3068,7 @@ def test_local_fill_useless():
 
 
 class Test_local_useless_alloc(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.rng = numpy.random.RandomState(utt.fetch_seed())
 
@@ -3109,6 +3122,7 @@ class Test_local_useless_alloc(unittest.TestCase):
 
 
 class test_shapeoptimizer(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -3452,6 +3466,7 @@ def test_local_mul_specialize():
 
 
 class T_Tile(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_local_useless_tile(self):
         # Tile op is deprecated so the tile function doesn't use it
         # anymore, we'll test here the op directly
@@ -3615,6 +3630,7 @@ def test_local_pow_specialize_device_more_aggressive_on_cpu():
 
 
 class T_Rebroadcast(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_local_useless_rebroadcast(self):
         mode = theano.compile.get_default_mode().including('canonicalize')
         v1 = T.vector()
@@ -3639,6 +3655,7 @@ class T_Rebroadcast(unittest.TestCase):
 
 
 class T_useless_elemwise(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.mode = theano.compile.get_default_mode().including('canonicalize')
 
@@ -3724,6 +3741,7 @@ class T_useless_elemwise(unittest.TestCase):
 
 
 class T_cast_cast(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         mode = theano.compile.get_default_mode()
         self.mode = mode.including('local_cast_cast')
@@ -3805,6 +3823,7 @@ def test_constant_get_stabilized():
 
 
 class T_local_switch_sink(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         # condition values
         self.condm = numpy.asarray([[0.1, 0, 1, -1],
@@ -3873,6 +3892,7 @@ class T_local_switch_sink(unittest.TestCase):
 
 
 class T_local_erf(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.mode = theano.compile.mode.get_default_mode().including(
                 'canonicalize', 'fast_run').excluding('gpu', 'fusion')
@@ -3960,6 +3980,7 @@ class T_local_erf(unittest.TestCase):
 
 
 class T_local_erfc(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.mode_fusion = theano.compile.mode.get_default_mode().including(
             'canonicalize').including('fast_run').excluding('gpu')
@@ -4142,6 +4163,7 @@ class T_local_erfc(unittest.TestCase):
 
 
 class test_local_remove_switch_const_cond(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.mode = mode_opt.excluding('constant_folding')
 
@@ -4224,6 +4246,7 @@ class test_local_remove_switch_const_cond(unittest.TestCase):
 
 
 class T_local_sum(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.mode = theano.compile.get_default_mode().including('canonicalize',
                                                                 'specialize')
@@ -4370,6 +4393,7 @@ class T_local_sum(unittest.TestCase):
 
 
 class T_local_reduce(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.mode = theano.compile.get_default_mode().including(
             'canonicalize',
@@ -4496,6 +4520,7 @@ class T_local_reduce(unittest.TestCase):
 
 
 class T_local_sum_dimshuffle(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.mode = theano.compile.get_default_mode().including('canonicalize')
 
@@ -4904,6 +4929,7 @@ def test_local_reshape_lift():
 
 
 class Test_lift_transpose_through_dot(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def simple_optimize(self, g):
         out2in(opt.local_useless_elemwise).optimize(g)
         out2in(opt.local_lift_transpose_through_dot).optimize(g)

@@ -12,6 +12,7 @@ if cuda_ndarray.cuda_available == False:
 
 
 class TestGradient(unittest.TestCase):
+    _multiprocess_can_split_ = True
     verbose = 0
 
     def test_gpu_out_multiple_clients(self):

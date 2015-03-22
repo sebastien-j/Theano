@@ -706,6 +706,7 @@ def test_subsample():
 
 
 class TestConv2DGPU(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_logical_shapes(self):
         seed_rng()
         for stride in range(1, 4):

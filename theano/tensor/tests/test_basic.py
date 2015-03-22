@@ -260,6 +260,7 @@ def makeTester(name, op, expected, checks=None, good=None, bad_build=None,
     _check_name = check_name
 
     class Checker(unittest.TestCase):
+        _multiprocess_can_split_ = True
 
         op = staticmethod(_op)
         expected = staticmethod(_expected)
@@ -2067,6 +2068,8 @@ class TestAsTensorVariable(unittest.TestCase):
     Unit test for ensuring that as_tensor_variable handles Apply objects
     correctly and removes leading broadcastable dimensions when possible.
     """
+    _multiprocess_can_split_ = True
+
     def setUp(self):
         self.x = tensor.scalar('x')
 
@@ -2096,6 +2099,7 @@ class TestAsTensorVariable(unittest.TestCase):
 
 
 class TestAlloc(unittest.TestCase):
+    _multiprocess_can_split_ = True
     dtype = config.floatX
     mode = mode_opt
     shared = staticmethod(theano.shared)
@@ -2228,6 +2232,7 @@ def test_eye():
 
 
 class test_triangle(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_tri(self):
         def check(dtype, N, M_=None, k=0):
             # Theano does not accept None as a tensor.
@@ -2299,6 +2304,7 @@ class test_triangle(unittest.TestCase):
 
 
 class test_nonzero(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_nonzero(self):
         def check(m):
             m_symb = theano.tensor.tensor(dtype=m.dtype,
@@ -2403,6 +2409,7 @@ def test_identity():
 
 
 class CastTester(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_good_between_real_types(self):
         good = itertools.chain(
                     multi_dtype_cast_checks((2,), dtypes=REAL_DTYPES),
@@ -2467,6 +2474,7 @@ ClipTester = makeTester(name='ClipTester',
 
 
 class T_Clip(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_complex_value(self):
         for dtype in ['complex64', 'complex128']:
             a = tensor.vector(dtype=dtype)
@@ -2612,6 +2620,7 @@ def test_nan_inf_constant_signature():
 
 
 class T_Shape(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_basic0(self):
         s = shape(numpy.ones((5, 3)))
         self.assertTrue((eval_outputs([s]) == [5, 3]).all())
@@ -2626,6 +2635,7 @@ class T_Shape(unittest.TestCase):
 
 
 class T_max_and_argmax(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
         MaxAndArgmax.debug = 0
@@ -2819,6 +2829,7 @@ class T_max_and_argmax(unittest.TestCase):
 
 
 class T_argmin_argmax(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
         MaxAndArgmax.debug = 0
@@ -2955,6 +2966,7 @@ class T_argmin_argmax(unittest.TestCase):
 
 
 class T_min_max(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
         MaxAndArgmax.debug = 0
@@ -3142,6 +3154,7 @@ class T_min_max(unittest.TestCase):
 
 
 class T_outer(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_outer(self):
         for m in range(4):
             for n in range(4):
@@ -3181,6 +3194,8 @@ class T_Join_and_Split(unittest.TestCase):
     """
     Split is tested by each verify_grad method.
     """
+    _multiprocess_can_split_ = True
+
     def setUp(self):
         Join.debug = False
         utt.seed_rng()
@@ -3800,6 +3815,8 @@ class test_comparison(unittest.TestCase):
      work(futur behavior) or raise an error(current NumPy release).
 
     """
+    _multiprocess_can_split_ = True
+
     def test_gt(self):
         for dtype in ['float64', 'float32', 'complex64', 'complex128']:
             l = numpy.asarray([0., -1., 1.], dtype=dtype)
@@ -3910,6 +3927,7 @@ class test_comparison(unittest.TestCase):
 
 
 class test_bitwise(unittest.TestCase):
+    _multiprocess_can_split_ = True
     dtype = ['int8', 'int16', 'int32', 'int64', ]
 
     def test_or(self):
@@ -3966,6 +3984,7 @@ class test_bitwise(unittest.TestCase):
 
 
 class T_add(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -3998,11 +4017,13 @@ class T_add(unittest.TestCase):
 
 
 class T_ceil(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_complex(self):
         self.assertRaises(TypeError, tensor.ceil, tensor.zvector())
 
 
 class T_exp(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_grad_0(self):
         utt.verify_grad(exp, [
             numpy.asarray([[1.5089518,  1.48439076, -4.7820262],
@@ -4028,6 +4049,7 @@ class T_exp(unittest.TestCase):
 
 
 class T_divimpl(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_impls(self):
         i = iscalar()
         ii = lscalar()
@@ -4052,6 +4074,7 @@ class T_divimpl(unittest.TestCase):
 
 
 class T_mean(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_regression_mean_of_ndarray_failure(self):
         try:
             tensor.mean(numpy.zeros(1))
@@ -4067,6 +4090,7 @@ class T_mean(unittest.TestCase):
 
 
 class test_matinv(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()
@@ -4132,6 +4156,7 @@ class test_matinv(unittest.TestCase):
 
 
 class t_dot(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -4402,6 +4427,7 @@ class t_dot(unittest.TestCase):
 
 
 class T_tensorfromscalar(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test0(self):
         s = scal.constant(56)
         t = tensor_from_scalar(s)
@@ -4452,6 +4478,7 @@ class T_tensorfromscalar(unittest.TestCase):
 
 
 class T_scalarfromtensor(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test0(self):
         tt = constant(56)  # scal.constant(56)
         ss = scalar_from_tensor(tt)
@@ -4480,6 +4507,7 @@ class T_scalarfromtensor(unittest.TestCase):
 
 
 class test_grad(unittest.TestCase):
+    _multiprocess_can_split_ = True
     class O(gof.op.Op):
         def __init__(self):
             self.gval0 = scalar('e')
@@ -4570,6 +4598,7 @@ class test_grad(unittest.TestCase):
 
 
 class T_op_cache(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -4874,6 +4903,7 @@ def test_tile_grad():
 
 
 class TestARange(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -5189,6 +5219,7 @@ class TestARange(unittest.TestCase):
 
 
 class TestInversePermutation(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -5233,6 +5264,7 @@ class TestInversePermutation(unittest.TestCase):
 
 
 class TestPermuteRowElements(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -5359,6 +5391,7 @@ class TestPermuteRowElements(unittest.TestCase):
 
 
 class test_tensordot(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def TensorDot(self, axes):
         """
         Since tensordot is no longer an op, mimic the old op signature
@@ -5806,7 +5839,6 @@ def _test_autocast_numpy_floatX():
 
 
 class test_arithmetic_cast(unittest.TestCase):
-
     """
     Test output types of basic arithmeric operations (* / + - //).
 
@@ -5814,6 +5846,7 @@ class test_arithmetic_cast(unittest.TestCase):
     'numpy+floatX': the 'custom' behavior is (at least partially) tested in
     `_test_autocast_custom`.
     """
+    _multiprocess_can_split_ = True
 
     def test_arithmetic_cast(self):
         backup_config = config.cast_policy
@@ -5959,6 +5992,7 @@ class test_arithmetic_cast(unittest.TestCase):
 
 
 class T_long_tensor(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_fit_int64(self):
         for exp in xrange(64):
             val = 2L ** exp - 1
@@ -6010,6 +6044,7 @@ class T_long_tensor(unittest.TestCase):
 
 
 class test_broadcast(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_broadcast_bigdim(self):
         def f():
             x = matrix()
@@ -6211,6 +6246,7 @@ def test_dimshuffle_duplicate():
 
 
 class T_get_scalar_constant_value(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_get_scalar_constant_value(self):
         a = tensor.stack(1, 2, 3)
         assert get_scalar_constant_value(a[0]) == 1
@@ -6311,6 +6347,7 @@ class T_as_tensor_variable(unittest.TestCase):
     We should not allow as_tensor_variable to accept True or False
     But it should upcast an ndrarray of bool to uint8
     """
+    _multiprocess_can_split_ = True
 
     def test_bool(self):
         self.assertRaises(TypeError, as_tensor_variable, True)
@@ -6331,6 +6368,7 @@ class T_as_tensor_variable(unittest.TestCase):
 
 class test_complex_mod(unittest.TestCase):
     """Make sure % fails on complex numbers."""
+    _multiprocess_can_split_ = True
 
     def test_fail(self):
         x = vector(dtype='complex64')
@@ -6345,6 +6383,7 @@ class test_size(unittest.TestCase):
     """
     Ensure the `size` attribute of tensors behaves as in numpy.
     """
+    _multiprocess_can_split_ = True
 
     def test_matrix(self):
         x = tensor.matrix()
@@ -6372,6 +6411,7 @@ class test_numpy_assumptions(unittest.TestCase):
     """
     Verify that some assumptions Theano makes on Numpy's behavior still hold.
     """
+    _multiprocess_can_split_ = True
 
     def test_ndarray_copy(self):
         """
@@ -6475,6 +6515,7 @@ def test_stacklists():
 
 
 class TestSpecifyShape(unittest.TestCase):
+    _multiprocess_can_split_ = True
     mode = None
     input_type = TensorType
 
@@ -6941,6 +6982,7 @@ class TestInferShape(utt.InferShapeTester):
 
 
 class TestTensorInstanceMethods(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.vars = matrices('X', 'Y')
         self.vals = [m.astype(floatX) for m in [rand(2,2),rand(2,2)]]
@@ -7079,6 +7121,7 @@ def test_norm():
 
 
 class test_ptp(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_scalar(self):
         """
         Should return 0 for all scalar
@@ -7169,6 +7212,7 @@ if __name__ == '__main__':
 
 
 class T_swapaxes(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_no_dimensional_input(self):
         self.assertRaises(IndexError, swapaxes, 2, 0, 1)
@@ -7203,6 +7247,7 @@ class T_swapaxes(unittest.TestCase):
 
 
 class T_Power(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_numpy_compare(self):
         rng = numpy.random.RandomState(utt.fetch_seed())
         A = tensor.matrix("A", dtype=theano.config.floatX)

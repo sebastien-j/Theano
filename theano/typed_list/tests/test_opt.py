@@ -20,6 +20,7 @@ def rand_ranged_matrix(minimum, maximum, shape):
 
 
 class test_inplace(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_reverse_inplace(self):
         mySymbolicMatricesList = TypedListType(T.TensorType(

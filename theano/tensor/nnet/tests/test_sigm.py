@@ -21,6 +21,7 @@ from theano.tensor.tests.test_basic import (makeBroadcastTester, rand,
 
 
 class T_sigmoid(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -70,6 +71,7 @@ SoftplusTester = makeBroadcastTester(
 
 
 class T_softplus(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -78,6 +80,7 @@ class T_softplus(unittest.TestCase):
 
 
 class T_sigmoid_opts(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def get_mode(self, excluding=None):
         """
@@ -337,6 +340,7 @@ class T_sigmoid_opts(unittest.TestCase):
 
 
 class T_softplus_opts(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         if theano.config.mode == 'FAST_COMPILE':
             m = theano.compile.mode.get_mode('FAST_RUN').excluding(
@@ -411,6 +415,7 @@ class T_softplus_opts(unittest.TestCase):
 
 
 class T_sigmoid_utils(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     """
     Test utility functions found in 'sigm.py'.

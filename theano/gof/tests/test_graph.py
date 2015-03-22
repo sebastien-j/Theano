@@ -234,6 +234,7 @@ class TestToposort:
 #################
 
 class TestIsSameGraph(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def check(self, expected, debug=True):
         """
@@ -309,6 +310,7 @@ class TestIsSameGraph(unittest.TestCase):
 ################
 
 class TestEval(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         self.x, self.y = tensor.scalars('x', 'y')

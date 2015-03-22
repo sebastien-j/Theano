@@ -212,6 +212,7 @@ def test_softmax_with_bias():
 
 
 class test_SoftMax(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def _test_softmax(
         self,
         x,

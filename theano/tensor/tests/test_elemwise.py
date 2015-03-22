@@ -103,6 +103,7 @@ class test_DimShuffle(unittest_tools.InferShapeTester):
 
 
 class test_reduce_axes(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_sum_axes(self):
         axes = [None, 0, 1, [0, 1], numpy.array(1),
@@ -148,6 +149,7 @@ class test_reduce_axes(unittest.TestCase):
 
 
 class test_Broadcast(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # this is to allow other types to reuse this class to test their ops
     type = TensorType
     op = Elemwise
@@ -556,6 +558,7 @@ class test_CAReduce(unittest_tools.InferShapeTester):
 
 
 class test_Prod(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         unittest_tools.seed_rng()
 
@@ -711,6 +714,7 @@ class test_Prod(unittest.TestCase):
 
 
 class test_IsInf_IsNan(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         self.test_vals = [numpy.array(x, dtype=config.floatX) for x in [
@@ -752,6 +756,7 @@ class test_IsInf_IsNan(unittest.TestCase):
 
 
 class T_reduce_dtype(unittest.TestCase):
+    _multiprocess_can_split_ = True
     mode = theano.compile.get_default_mode().excluding(
         'local_cut_useless_reduce')
     op = CAReduce
@@ -906,6 +911,7 @@ class T_reduce_dtype(unittest.TestCase):
 
 
 class T_mean_dtype(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_mean_default_dtype(self):
         """
         Test the default dtype of a mean().
@@ -985,6 +991,7 @@ class T_mean_dtype(unittest.TestCase):
 
 
 class T_prod_without_zeros_dtype(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_prod_without_zeros_default_dtype(self):
         """
         Test the default dtype of a ProdWithoutZeros().
@@ -1094,6 +1101,7 @@ class T_prod_without_zeros_dtype(unittest.TestCase):
 
 
 class TestBitOpReduceGrad(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.rng = numpy.random.RandomState(unittest_tools.fetch_seed())
 

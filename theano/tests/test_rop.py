@@ -58,6 +58,7 @@ break_op = BreakRop()
 
 
 class RopLop_checker(unittest.TestCase):
+    _multiprocess_can_split_ = True
     """ Don't peform any test, but provide the function to test the
     Rop to class that inherit from it."""
 

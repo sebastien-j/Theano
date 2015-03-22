@@ -47,6 +47,7 @@ def random_lil(shape, dtype, nnz):
 
 
 class test_get_item(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()
@@ -141,6 +142,7 @@ class test_get_item(unittest.TestCase):
 
 
 class test_append(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_inplace(self):
         mySymbolicMatricesList = TypedListType(T.TensorType(
@@ -190,6 +192,7 @@ class test_append(unittest.TestCase):
 
 
 class test_extend(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_inplace(self):
         mySymbolicMatricesList1 = TypedListType(T.TensorType(
@@ -244,6 +247,7 @@ class test_extend(unittest.TestCase):
 
 
 class test_insert(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_inplace(self):
         mySymbolicMatricesList = TypedListType(T.TensorType(
@@ -303,6 +307,7 @@ class test_insert(unittest.TestCase):
 
 
 class test_remove(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_inplace(self):
         mySymbolicMatricesList = TypedListType(T.TensorType(
@@ -352,6 +357,7 @@ class test_remove(unittest.TestCase):
 
 
 class test_reverse(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_inplace(self):
         mySymbolicMatricesList = TypedListType(T.TensorType(
@@ -398,6 +404,7 @@ class test_reverse(unittest.TestCase):
 
 
 class test_index(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_sanity_check(self):
         mySymbolicMatricesList = TypedListType(T.TensorType(
@@ -464,6 +471,7 @@ class test_index(unittest.TestCase):
 
 
 class test_count(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_sanity_check(self):
         mySymbolicMatricesList = TypedListType(T.TensorType(
@@ -530,6 +538,7 @@ class test_count(unittest.TestCase):
 
 
 class test_length(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_sanity_check(self):
         mySymbolicMatricesList = TypedListType(T.TensorType(
@@ -556,6 +565,7 @@ class test_length(unittest.TestCase):
 
 
 class T_MakeList(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_wrong_shape(self):
         a = T.vector()

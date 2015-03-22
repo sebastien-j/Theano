@@ -35,6 +35,7 @@ def checkfor(testcase, fn, E):
 
 
 class T_function(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_none(self):
         fn = function([], None) #ok
         rval = fn()
@@ -421,6 +422,7 @@ class T_function(unittest.TestCase):
                 assert (val[0] == None)
 
 class T_picklefunction(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_deepcopy(self):
         a = T.scalar() # the a is for 'anonymous' (un-named).

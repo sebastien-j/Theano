@@ -23,6 +23,7 @@ from theano.sandbox.scan_module.scan_op import ScanOp
 
 
 class TestScan(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()

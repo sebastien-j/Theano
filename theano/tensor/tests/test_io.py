@@ -6,6 +6,7 @@ import os
 
 
 class T_load_tensor(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.data = numpy.arange(5, dtype=numpy.int32)
         self.filename = os.path.join(

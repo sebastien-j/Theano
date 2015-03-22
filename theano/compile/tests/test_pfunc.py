@@ -17,6 +17,7 @@ def data_of(s):
 
 
 class Test_pfunc(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_doc(self):
         """Ensure the code given in pfunc.txt works as expected"""
@@ -685,7 +686,7 @@ class Test_aliasing_rules(unittest.TestCase):
     potentially invalidated by the next Theano Function call or call to theano
     library code.
     """
-
+    _multiprocess_can_split_ = True
     def shared(self, x):
         return tensor._shared(x)
 
@@ -986,6 +987,7 @@ class Test_aliasing_rules(unittest.TestCase):
 
 
 class Test_rebuild_strict(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test1(self):
         # Test fix for error reported at
         # https://groups.google.com/d/topic/theano-users/BRK0UEB72XA/discussion

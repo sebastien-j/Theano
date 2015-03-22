@@ -16,6 +16,7 @@ class TestGaussNewton(unittest.TestCase):
 
     This test case is based on code by Sigurd Spieckermann.
     """
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.rng = numpy.random.RandomState(utt.fetch_seed())
 

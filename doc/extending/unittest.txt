@@ -42,6 +42,7 @@ example:
 .. code-block:: python
 
     class MyTestCase(unittest.TestCase):
+        _multiprocess_can_split_ = True
         def test0(self):
             pass
             # test passes cleanly
@@ -187,6 +188,7 @@ Example:
 
     import unittest
     class TestTensorDot(unittest.TestCase):
+        _multiprocess_can_split_ = True
         def test_validity(self):
             # do stuff
             ...
@@ -204,6 +206,7 @@ generators -- more on this later)
 .. code-block:: python
 
     class TestTensorDot(unittest.TestCase):
+        _multiprocess_can_split_ = True
         def setUp(self):
             # data which will be used in various test methods
             self.avals = numpy.array([[1,5,3],[2,4,1]])
@@ -225,6 +228,7 @@ Example:
 .. code-block:: python
 
     class TestTensorDot(unittest.TestCase):
+        _multiprocess_can_split_ = True
         def setUp(self):
             ...
 
@@ -276,6 +280,7 @@ Example:
 .. code-block:: python
 
     class TestTensorDot(unittest.TestCase):
+        _multiprocess_can_split_ = True
         ...
         def test_3D_dot_fail(self):
             def func():
@@ -339,6 +344,7 @@ do the following:
     from theano.tests import unittest_tools
 
     class TestTensorDot(unittest.TestCase):
+        _multiprocess_can_split_ = True
         def setUp(self):
             unittest_tools.seed_rng()
             # OR ... call with an explicit seed 

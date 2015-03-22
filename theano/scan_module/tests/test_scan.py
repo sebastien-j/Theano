@@ -204,6 +204,7 @@ def grab_scan_node(output):
 
 
 class T_Scan(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()

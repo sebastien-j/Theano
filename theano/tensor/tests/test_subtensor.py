@@ -1149,6 +1149,7 @@ class T_subtensor(unittest.TestCase, utt.TestOptimizationMixin):
 
 
 class TestIncSubtensor1(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # test inc_subtensor
     # also tests set_subtensor
 
@@ -1207,6 +1208,7 @@ inplace_increment_missing = SkipTest(
 
 
 class TestAdvancedSubtensor(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # test inc_subtensor
     # also tests set_subtensor
     def __init__(self, name,

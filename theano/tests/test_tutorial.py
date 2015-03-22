@@ -20,6 +20,7 @@ from theano.tensor.shared_randomstreams import RandomStreams
 
 
 class T_extending(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to files in
     # http://deeplearning.net/software/theano/extending
     # Theano/doc/extending/*.txt
@@ -508,6 +509,7 @@ class T_extending(unittest.TestCase):
 
 
 class T_introduction(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to
     # http://deeplearning.net/software/theano/tutorial/introduction.html
     # Theano/doc/tutorial/introduction.txt
@@ -533,6 +535,7 @@ class T_introduction(unittest.TestCase):
 
 
 class T_adding(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to
     # http://deeplearning.net/software/theano/tutorial/adding.html
     # Theano/doc/tutorial/adding.txt
@@ -564,6 +567,7 @@ class T_adding(unittest.TestCase):
 
 
 class T_examples(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belog to
     # http://deeplearning.net/software/theano/tutorial/examples.html
     # Theano/doc/tutorial/examples.txt
@@ -803,6 +807,7 @@ class T_examples(unittest.TestCase):
 
 
 class T_aliasing(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belog to
     # http://deeplearning.net/software/theano/tutorial/aliasing.html
     # Theano/doc/tutorial/aliasing.txt
@@ -854,6 +859,7 @@ class T_aliasing(unittest.TestCase):
 
 
 class T_loading_and_saving(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to
     # http://deeplearning.net/software/theano/tutorial/loading_and_saving.html
     # Theano/doc/tutorial/loading_and_saving.txt
@@ -912,6 +918,7 @@ class T_loading_and_saving(unittest.TestCase):
 
 
 class T_modes(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to
     # http://deeplearning.net/software/theano/tutorial/modes.html
     # Theano/doc/tutorial/modes.txt
@@ -929,6 +936,7 @@ class T_modes(unittest.TestCase):
 
 
 class T_using_gpu(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belog to
     # http://deeplearning.net/software/theano/tutorial/using_gpu.html
     # Theano/doc/tutorial/using_gpu.txt
@@ -1133,6 +1141,7 @@ class Fibby(theano.Op):
 
 
 class T_fibby(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to
     # http://deeplearning.net/software/theano/extending/fibby.html
     # Theano/doc/extending/fibby.txt
@@ -1189,6 +1198,7 @@ class T_fibby(unittest.TestCase):
 
 
 class T_graphstructures(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to
     # http://deeplearning.net/software/theano/extending/graphstructures.html
     # Theano/doc/extending/graphstructures.txt
@@ -1254,6 +1264,7 @@ class T_graphstructures(unittest.TestCase):
 
 
 class T_scan(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to
     # http://deeplearning.net/software/theano/tutorial/loop.html
     # Theano/doc/tutorial/loop.txt
@@ -1461,6 +1472,7 @@ class T_scan(unittest.TestCase):
 
 
 class T_typedlist(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # All tests here belong to
     # http://deeplearning.net/software/theano/library/typed_list.html
     # Theano/doc/library/typed_list.txt

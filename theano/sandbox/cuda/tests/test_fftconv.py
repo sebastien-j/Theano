@@ -26,6 +26,7 @@ else:
 
 
 class TestConv2dFFT(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def run_conv(self, inputs_shape, filters_shape, pad=False, **other_args):
         inputs_val = numpy.random.random(inputs_shape).astype('float32')
         filters_val = numpy.random.random(filters_shape).astype('float32')
@@ -165,6 +166,7 @@ class TestConv2dFFT(unittest.TestCase):
 
 
 class TestConv3dFFT(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def run_conv_valid(self, inputs_shape, filters_shape, pad=False):
         inputs_val = numpy.random.random(inputs_shape).astype('float32')

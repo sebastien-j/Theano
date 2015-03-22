@@ -180,6 +180,7 @@ class T_OpContractMixin(object):
 
 
 class InferShapeTester(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         seed_rng()
         # Take into account any mode that may be defined in a child class

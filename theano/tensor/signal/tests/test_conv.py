@@ -13,6 +13,7 @@ from theano.tensor.basic import _allclose
 
 
 class TestSignalConv2D(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()

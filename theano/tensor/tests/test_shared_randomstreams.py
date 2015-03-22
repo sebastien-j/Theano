@@ -14,6 +14,7 @@ from theano import compile, config, gof
 from theano.tests import unittest_tools as utt
 
 class T_SharedRandomStreams(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 

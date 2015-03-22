@@ -11,6 +11,7 @@ import numpy.random
 from theano.tests import unittest_tools as utt
 
 class T_XlogX(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -26,6 +27,7 @@ class T_XlogX(unittest.TestCase):
         utt.verify_grad(xlogx, [numpy.random.rand(3,4)])
 
 class T_XlogY0(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
     def test2(self):

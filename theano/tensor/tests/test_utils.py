@@ -53,6 +53,7 @@ def test_hash_from_dict():
 
 
 class Tshape_of_variables(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_simple(self):
         x = theano.tensor.matrix('x')
         y = x+x

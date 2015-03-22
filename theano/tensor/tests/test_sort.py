@@ -11,6 +11,7 @@ from theano.tensor.sort import argsort, ArgSortOp
 
 
 class test_sort(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         self.rng = np.random.RandomState(seed=utt.fetch_seed())

@@ -61,6 +61,7 @@ def makeSharedTester(shared_constructor_,
 
     """
     class SharedTester(unittest.TestCase):
+    _multiprocess_can_split_ = True
         shared_constructor = staticmethod(shared_constructor_)
         dtype = dtype_
         get_value_borrow_true_alias = get_value_borrow_true_alias_

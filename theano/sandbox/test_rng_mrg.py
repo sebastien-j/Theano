@@ -843,6 +843,7 @@ def test_multinomial():
 
 
 class T_MRG(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_bad_size(self):
 
         R = MRG_RandomStreams(234, use_cuda=False)

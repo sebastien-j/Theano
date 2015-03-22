@@ -575,6 +575,7 @@ def test_dnn_subsample():
 
 
 class TestConv2DGPU(unittest.TestCase):
+    _multiprocess_can_split_ = True
     conv_ops = (cuda.blas.GpuConv,
                 cuda.dnn.DnnBase,
                 cuda.blas.BaseGpuCorrMM)

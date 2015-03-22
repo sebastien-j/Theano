@@ -20,6 +20,8 @@ class Test_inc_subtensor(unittest.TestCase):
     functions.
 
     """
+    _multiprocess_can_split_ = True
+
     def setUp(self):
         utt.seed_rng()
 

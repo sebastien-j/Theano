@@ -165,6 +165,7 @@ def grab_scan_node(output):
 
 
 class TestScanUtils(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test001_cloning_no_replace_strict_copy_inputs(self):
         # This has nothing to do with scan, but it refers to the clone

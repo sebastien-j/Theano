@@ -53,6 +53,7 @@ def test_givens():
 
 
 class T_updates(unittest.TestCase):
+    _multiprocess_can_split_ = True
     # Test that you can use a TensorType expression to update a
     # CudaNdarrayType in the updates dictionary.
 

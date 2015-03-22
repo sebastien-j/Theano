@@ -7,6 +7,7 @@ from numpy.testing import dec
 
 
 class TestRealImag(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test0(self):
         x = zvector()

@@ -30,6 +30,7 @@ from theano.tensor import matrix, vector, lvector, scalar
 
 
 class T_sigmoid(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()
@@ -39,6 +40,7 @@ class T_sigmoid(unittest.TestCase):
 
 
 class T_softplus(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()
@@ -156,6 +158,7 @@ class T_SoftmaxGrad(utt.InferShapeTester):
 
 
 class T_CrossentropySoftmax1Hot(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()

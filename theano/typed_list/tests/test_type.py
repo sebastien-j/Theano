@@ -16,6 +16,7 @@ def rand_ranged_matrix(minimum, maximum, shape):
 
 
 class test_typed_list_type(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()

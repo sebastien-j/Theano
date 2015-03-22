@@ -6,6 +6,7 @@ import theano.tensor as T
 
 
 class test_ifelse(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_updates_init(self):
         self.assertRaises(TypeError, OrderedUpdates, dict(d=3))

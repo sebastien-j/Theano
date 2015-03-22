@@ -50,6 +50,7 @@ solve = Solve()
 ## TODO: test that each valid type for A and b works correctly
 from theano.tests import unittest_tools as utt
 class T_solve(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.rng = numpy.random.RandomState(utt.fetch_seed(666))
 

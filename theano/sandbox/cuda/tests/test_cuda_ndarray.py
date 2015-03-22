@@ -242,6 +242,7 @@ def test_nvcc_bug():
 
 
 class test_DimShuffle(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_dimshuffle(self):
         utt.seed_rng()
         rng = numpy.random.RandomState(utt.fetch_seed())

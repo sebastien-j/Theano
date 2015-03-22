@@ -25,6 +25,7 @@ class TestCallbacks(unittest.TestCase):
     """
     Test the VM_Linker's callback argument, which can be useful for debugging.
     """
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.n_callbacks = {}
 

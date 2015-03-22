@@ -29,6 +29,7 @@ def grad_sources_inputs(sources, inputs):
         wrt=inputs, consider_constant=inputs)))
 
 class testgrad_sources_inputs(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_retNone1(self):
         """Test that it is not ok to return None from op.grad()"""
@@ -138,6 +139,7 @@ class testgrad_sources_inputs(unittest.TestCase):
 
 
 class test_grad(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_unimplemented_grad_func(self):
         # tests that function compilation catches unimplemented grads
@@ -605,6 +607,7 @@ def test_subgraph_grad():
 
 
 class TestConsiderConstant(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()
@@ -644,6 +647,7 @@ class TestConsiderConstant(unittest.TestCase):
 
 
 class TestZeroGrad(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()
@@ -683,6 +687,7 @@ class TestZeroGrad(unittest.TestCase):
 
 
 class TestDisconnectedGrad(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def setUp(self):
         utt.seed_rng()

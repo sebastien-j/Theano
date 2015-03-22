@@ -364,6 +364,7 @@ def test_baddestroymap_c():
 
 
 class Test_ViewMap(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     class BadAddRef(gof.Op):
         def make_node(self, a, b):
@@ -547,6 +548,7 @@ class Test_ViewMap(unittest.TestCase):
 
 
 class Test_check_isfinite(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.old_ts = theano.tensor.TensorType.filter_checks_isfinite
         self.old_dm = theano.compile.mode.predefined_modes[
@@ -736,6 +738,7 @@ class VecAsRowAndCol(gof.Op):
 
 
 class Test_preallocated_output(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.rng = numpy.random.RandomState(seed=utt.fetch_seed())
 

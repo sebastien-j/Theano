@@ -12,6 +12,7 @@ from theano.tests import unittest_tools as utt
 
 
 class T_max_and_argmax(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_optimization(self):
         #If we use only the max output, we should replace this op with
         #a faster one.
@@ -34,6 +35,7 @@ class T_max_and_argmax(unittest.TestCase):
 
 
 class T_min_max(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
         self.mode = theano.compile.mode.get_default_mode().including(

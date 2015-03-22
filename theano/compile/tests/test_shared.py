@@ -7,6 +7,7 @@ from theano.compile.sharedvalue import *
 
 
 class Test_SharedVariable(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_ctors(self):
 

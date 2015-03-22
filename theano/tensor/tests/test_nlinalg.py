@@ -222,6 +222,8 @@ class test_diag(unittest.TestCase):
     test_diag test makes sure that linalg.diag instantiates
     the right op based on the dimension of the input.
     """
+    _multiprocess_can_split_ = True
+
     def __init__(self, name, mode=None, shared=tensor._shared,
                  floatX=None, type=tensor.TensorType):
         self.mode = mode
@@ -429,6 +431,7 @@ class test_Eigh_float32(test_Eigh):
 
 
 class T_lstsq(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_correct_solution(self):
         x = tensor.lmatrix()
@@ -461,6 +464,7 @@ class T_lstsq(unittest.TestCase):
 
 
 class Matrix_power(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_numpy_compare(self):
         rng = numpy.random.RandomState(utt.fetch_seed())
@@ -483,6 +487,7 @@ class Matrix_power(unittest.TestCase):
 
 
 class T_NormTests(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_wrong_type_of_ord_for_vector(self):
         self.assertRaises(ValueError, norm, [2, 1], 'fro')

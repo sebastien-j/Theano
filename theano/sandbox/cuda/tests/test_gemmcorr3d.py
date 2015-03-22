@@ -22,6 +22,7 @@ else:
 
 
 class TestCorr3DMM(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def run_conv_valid(self, inputs_shape, filters_shape,
                        subsample=(1, 1, 1)):

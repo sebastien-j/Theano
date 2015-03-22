@@ -33,6 +33,7 @@ def inputs():
 
 
 class test_ScalarOps(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_straightforward(self):
         x, y, z = inputs()
@@ -100,6 +101,7 @@ class test_ScalarOps(unittest.TestCase):
 
 
 class test_composite(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_straightforward(self):
         x, y, z = inputs()
@@ -190,6 +192,7 @@ class test_composite(unittest.TestCase):
 
 
 class test_logical(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_gt(self):
         x, y, z = inputs()
         fn = gof.DualLinker().accept(FunctionGraph([x,y], [x > y])).make_function()
@@ -385,6 +388,7 @@ class test_upgrade_to_float(object):
 
 
 class test_complex_mod(unittest.TestCase):
+    _multiprocess_can_split_ = True
     """Make sure % fails on complex numbers."""
 
     def test_fail(self):
@@ -398,6 +402,7 @@ class test_complex_mod(unittest.TestCase):
 
 
 class test_div(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_0(self):
         a = int8()
         b = int32()

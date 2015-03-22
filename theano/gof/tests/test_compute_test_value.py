@@ -42,6 +42,7 @@ class IncOneC(Op):
 
 
 class TestComputeTestValue(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_variable_only(self):
         orig_compute_test_value = theano.config.compute_test_value

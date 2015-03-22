@@ -8,6 +8,7 @@ from theano.tensor import *
 
 
 class test_casting(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_0(self):
         for op_fn in [_convert_to_int32, _convert_to_float32,
                       _convert_to_float64]:

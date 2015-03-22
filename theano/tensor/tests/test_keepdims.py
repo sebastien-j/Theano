@@ -10,6 +10,7 @@ from theano import tensor, function
 # this tests other ops to ensure they keep the dimensions of their
 # inputs correctly
 class TestKeepDims(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def makeKeepDims_local(self, x, y, axis):
         if axis is None:

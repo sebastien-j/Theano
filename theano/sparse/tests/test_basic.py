@@ -171,6 +171,7 @@ def sparse_random_inputs(format, shape, n=1, out_dtype=None, p=0.5, gap=None,
 
 
 class T_verify_grad_sparse(unittest.TestCase):
+    _multiprocess_can_split_ = True
     class FailOp(gof.op.Op):
         def __init__(self, structured):
             self.structured = structured
@@ -215,6 +216,7 @@ class T_verify_grad_sparse(unittest.TestCase):
 
 
 class T_transpose(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -442,6 +444,7 @@ class SparseInferShapeTester(utt.InferShapeTester):
 
 
 class TestConstructSparseFromList(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_adv_sub1_sparse_grad(self):
         v = theano.tensor.ivector()
 
@@ -495,6 +498,7 @@ class TestConstructSparseFromList(unittest.TestCase):
 
 
 class T_AddMul(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def testAddSS(self):
         self._testSS(add)
 
@@ -640,6 +644,7 @@ class T_AddMul(unittest.TestCase):
 
 
 class test_comparison(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -774,6 +779,7 @@ class test_comparison(unittest.TestCase):
 
 
 class T_conversion(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -839,6 +845,7 @@ class T_conversion(unittest.TestCase):
 
 
 class test_csm_properties(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -882,6 +889,7 @@ class test_csm_properties(unittest.TestCase):
 
 
 class test_csm(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -975,6 +983,7 @@ class test_csm(unittest.TestCase):
 
 
 class test_structureddot(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -1354,6 +1363,8 @@ class DotTests(utt.InferShapeTester):
 
 class UsmmTests(unittest.TestCase):
     """ Test the Usmm and UsmmCscDense class and related optimization """
+    _multiprocess_can_split_ = True
+
     def setUp(self):
         x_size = (10, 100)
         y_size = (100, 200)
@@ -1541,6 +1552,7 @@ class UsmmTests(unittest.TestCase):
 
 
 class test_zeros_like(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test(self):
         x = theano.sparse.csr_matrix()
         f = theano.function([x], theano.sparse.sp_zeros_like(x))
@@ -2023,6 +2035,7 @@ class Remove0Tester(utt.InferShapeTester):
 
 
 class Test_getitem(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         self.rng = numpy.random.RandomState(utt.fetch_seed())
 
@@ -2535,6 +2548,7 @@ def elemwise_checker(op, expected_f, gap=None, test_dtypes=None,
         test_dtypes = sparse.all_dtypes
 
     class Tester(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
         def setUp(self):
             super(Tester, self).setUp()
@@ -2872,6 +2886,7 @@ SqrtTester = elemwise_checker(
 
 
 class MulSVTester(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 
@@ -2907,6 +2922,7 @@ class MulSVTester(unittest.TestCase):
 
 
 class StructuredAddSVTester(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
 

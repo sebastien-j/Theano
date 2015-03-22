@@ -12,6 +12,7 @@ from theano.compile.builders import OpFromGraph
 
 
 class T_OpFromGraph(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_straightforward(self):
         x, y, z = T.matrices('xyz')

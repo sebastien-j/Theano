@@ -1227,11 +1227,10 @@ def test_gpueye():
 
 
 class test_size(unittest.TestCase):
-
     """
     Ensure the `size` attribute of CUDA tensors behaves as in numpy.
     """
-
+    _multiprocess_can_split_ = True
     def test_matrix(self):
         x = cuda.fmatrix()
         y = numpy.zeros((5, 7), dtype='float32')

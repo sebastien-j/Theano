@@ -16,6 +16,7 @@ from theano.tests import unittest_tools as utt
 
 
 class T_scipy(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def setUp(self):
         utt.seed_rng()
         self.orig_floatX = theano.config.floatX

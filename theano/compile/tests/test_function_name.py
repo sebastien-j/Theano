@@ -8,6 +8,7 @@ from theano import tensor
 
 
 class FunctionName(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_function_name(self):
         x = tensor.vector('x')
         func = theano.function([x], x + 1.)

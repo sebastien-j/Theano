@@ -7,6 +7,7 @@ from theano import tensor as tt
 
 
 class TFunctionGraph(unittest.TestCase):
+    _multiprocess_can_split_ = True
     def test_constant_cache_error(self):
         v = theano.tensor.constant(1)
         assert v.cached

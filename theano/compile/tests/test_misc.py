@@ -38,6 +38,7 @@ class NNet(object):
         self.output_from_hidden = pfunc([self.hidden], self.output)
 
 class TestNnet(unittest.TestCase):
+    _multiprocess_can_split_ = True
 
     def test_nnet(self):
         rng = numpy.random.RandomState(1827)
